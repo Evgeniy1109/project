@@ -1,17 +1,40 @@
 <template>
   <div class="v_card_item">
-
+    <img class="v-card-item__image" :src="require('../assets/images/' + card_item_data.image)" alt="">
+  <div>
+    <p>{{card_item_data.name}}</p>
+    <p>{{ card_item_data.price }}</p>
+    <p>{{ card_item_data.article }}</p>
+    <p>{{ card_item_data.about }}</p>
+  </div>
+  <div class="v_card_item__count">
+    <p>Количество</p>
+  </div>
+  <button @click="deleteFromCard">Удалить</button>
   </div>
 </template>
 
 <script>
 export default {
     name: 'v-card-item',
-    data() {
-        return {
-            title: 'hello!'
+    props: {
+        card_item_data: {
+            type: Object,
+            default() {
+                return {};
+            }
         }
     },
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        deleteFromCard(){
+            this.$emit('deleteFromCard')
+        }
+    }
 }
 </script>
 

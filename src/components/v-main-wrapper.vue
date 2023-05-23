@@ -1,13 +1,17 @@
 <template>
     <div class="v-main-wrapper">
         <vCatalog/>
-        <vCard/>
+        <vCard
+        v-if="CARD.length"
+        :card_data="CARD"
+        />
     </div>
 </template>
 
 <script>
 import vCatalog from './v-catalog.vue'
 import vCard from './v-card.vue'
+import {mapGetters} from 'vuex'
 export default {
     name: 'v-main-wrapper',
     components: {
@@ -20,7 +24,9 @@ export default {
             title: 'Hello word'
         }
     },
-    computed: {},
+    computed: {
+        ...mapGetters(['CARD'])
+    },
     methods: {},
     watch: {},
     // mounted: (){
@@ -31,9 +37,6 @@ export default {
 
 <style>
 .v-main-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     max-width: 900px;
     margin: 0 auto;
 }
