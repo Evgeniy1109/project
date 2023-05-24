@@ -1,16 +1,20 @@
 <template>
     <div class="v-card">
+        <router-link :to="{ name: 'catalog' }">
+        <div class="v-catalog_link">Корзина: {{ CARD.length }}</div>
+        <button>В каталог</button>
+        </router-link>
         <h2>Корзина</h2>
         <vCardItem
-        v-for="(item, index) in card_data" :key="item.article" :card_item_data="item"
+        v-for="(item, index) in CARD" :key="item.article" :card_item_data="item"
         @deleteFromCard="deleteFromCard(index)"
         />
     </div>
 </template>
 
 <script>
-import vCardItem from './v-card-item.vue'
-import {mapActions} from 'vuex'
+import vCardItem from './v-card-item.vue';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'v-card',
     components: {
@@ -26,6 +30,9 @@ export default {
     },
     data() {
         return {};
+    },
+    computed: {
+        ...mapGetters(['CARD']),
     },
     methods: {
         ...mapActions(['DELETE_FROM_CARD']),

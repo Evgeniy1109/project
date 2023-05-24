@@ -10,7 +10,7 @@
   <div class="v_card_item__count">
     <p>Количество</p>
   </div>
-  <button @click="deleteFromCard">Удалить</button>
+  <button class="v_card_item_btn" @click="deleteFromCard">Удалить</button>
   </div>
 </template>
 
@@ -48,5 +48,7 @@ export default {
     box-shadow: 0 0 8px grey;
     padding: 20px;
     margin: 20px;
+    border-radius: 15px;
+    background-color: rgba(225, 228, 228, 0.739);
 }
 </style>
