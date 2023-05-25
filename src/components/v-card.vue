@@ -1,10 +1,13 @@
 <template>
     <div class="v-card">
+
         <router-link :to="{ name: 'catalog' }">
+
         <div class="v-catalog_link">Корзина: {{ CARD.length }}</div>
-        <button>В каталог</button>
+        <button class="v-catalog_link_btn">Вернуться в каталог</button>
         </router-link>
-        <h2>Корзина</h2>
+        <h2 class="v-catalog_link_subtitle">Корзина</h2>
+        <h2 class="v-catalog_link_subtitle">Сумма отложенных программ: {{ SUM }}</h2>
         <vCardItem
         v-for="(item, index) in CARD" :key="item.article" :card_item_data="item"
         @deleteFromCard="deleteFromCard(index)"
@@ -32,7 +35,7 @@ export default {
         return {};
     },
     computed: {
-        ...mapGetters(['CARD']),
+        ...mapGetters(['CARD', 'SUM']),
     },
     methods: {
         ...mapActions(['DELETE_FROM_CARD']),
@@ -51,5 +54,19 @@ export default {
     color: grey;
     font-size: 20px;
     margin-bottom: 20px;
+}
+.v-catalog_link_btn{
+    font-size: 26px;
+    font-weight: 700;
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 15px;
+    background-color: rgba(225, 228, 228, 0.739);
+    cursor: pointer;
+}
+.v-catalog_link_subtitle{
+     font-size: 26px;
+    font-weight: 700;
+    color: #000;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <h1>Учебные программы</h1>
 
-  <router-link :to="{name: 'card',  params: {card_data: CARD}}">
+  <router-link :to="{name: 'card'}">
     <div class="v-catalog_link">Корзина: {{ CARD.length }}</div>
     </router-link>
 

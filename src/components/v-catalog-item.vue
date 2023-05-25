@@ -2,7 +2,7 @@
   <div class="v-catalog-item">
     <img class="v-catalog-item__image" :src="require('../assets/images/'+ product_data.image)" alt="">
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
-    <p class="v-catalog-item__price">{{ product_data.price }}</p>
+    <p class="v-catalog-item__price">{{ product_data.price }} &#8381;</p>
     <p class="v-catalog-item__about">{{ product_data.about }}</p>
     <p class="v-catalog-item__category">{{ product_data.category }}</p>
     <button class="v-catalog-item__add_to_card_btn" @:click="addToCard">Добавить в корзину</button>

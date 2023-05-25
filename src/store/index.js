@@ -5,6 +5,8 @@ export default createStore({
   state: {
     products: [],
     card: [],
+    quantity: 0,
+    sum: 0
   },
   getters: {
     PRODUCTS(state) {
@@ -13,16 +15,33 @@ export default createStore({
     CARD(state) {
       return state.card;
     },
+    QUANTITY(state) {
+      return state.quantity
+    },
+    SUM(state) {
+      return state.sum
+    }
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
     },
     SET_CARD: (state, product) => {
-      state.card.push(product);
+      if (product.quantity === 0){
+        state.card.push(product);
+        product.quantity++;
+      } else {
+        product.quantity++;
+      }
+      state.sum += product.price;
     },
     REMOVE_FROM_CARD: (state, index) => {
-      state.card.splice(index, 1);
+      if (state.card[index].quantity ===0 ) {
+        state.card.splice(index, 1);
+      } else {
+       state.card[index].quantity--;
+       state.sum -= state.card[index].price;
+      }
     },
   },
   actions: {
@@ -45,6 +64,7 @@ export default createStore({
     DELETE_FROM_CARD({ commit }, index) {
       commit("REMOVE_FROM_CARD", index);
     },
+
   },
   modules: {},
 });
